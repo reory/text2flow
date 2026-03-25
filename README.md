@@ -35,9 +35,9 @@ A lightweight, high-performance web application that converts simple text syntax
 
   <table>
     <tr>
-      <td align="center"><b>Editor View</b></td>
-      <td align="center"><b>Simple Flow</b></td>
-      <td align="center"><b>Complex Logic</b></td>
+      <td align="center"><b>View 3</b></td>
+      <td align="center"><b>View 2</b></td>
+      <td align="center"><b>View 1</b></td>
     </tr>
     <tr>
       <td><img src="screenshots/a.png" width="300"></td>
