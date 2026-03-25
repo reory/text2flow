@@ -8,6 +8,7 @@
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
 ![Graphviz](https://img.shields.io/badge/Graphviz-FF6600?style=for-the-badge&logo=graphviz&logoColor=white)
+![Pyragify](https://img.shields.io/badge/Pyragify-blueviolet?style=for-the-badge&logo=google-gemini&logoColor=white)
 ![Jinja2](https://img.shields.io/badge/jinja-white?style=for-the-badge&logo=jinja&logoColor=black)
 ![Uvicorn](https://img.shields.io/badge/uvicorn-2094f3?style=for-the-badge&logo=uvicorn&logoColor=white)
 
