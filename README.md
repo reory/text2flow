@@ -29,19 +29,22 @@ A lightweight, high-performance web application that converts simple text syntax
 ---
 
 <details>
-  <summary>📸 Screenshots</summary>
+  <summary>📸Screenshots</summary>
+  
+  <br>
 
-<table>
-  <tr>
-    <td><b>Editor View</b></td>
-    <td><b>Generated Flow</b></td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/a.png" width="400"></td>
-    <td><img src="screenshots/b.png" width="400"></td>
-    <td><img src="screenshots/c.png" width="400"></td>
-  </tr>
-</table>
+  <table>
+    <tr>
+      <td align="center"><b>Editor View</b></td>
+      <td align="center"><b>Simple Flow</b></td>
+      <td align="center"><b>Complex Logic</b></td>
+    </tr>
+    <tr>
+      <td><img src="screenshots/a.png" width="300"></td>
+      <td><img src="screenshots/b.png" width="300"></td>
+      <td><img src="screenshots/c.png" width="300"></td>
+    </tr>
+  </table>
 
 </details>
 
