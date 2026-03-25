@@ -31,9 +31,9 @@ A lightweight, high-performance web application that converts simple text syntax
 <details>
   <summary>📸 Screenshots</summary>
 
-![Main Dashboard](screenshots/a.png)
-![Main Dashboard](screenshots/b.png)
-![Main Dashboard](screenshots/c.png)
+![Main Dashboard](./screenshots/a.png)
+![Main Dashboard](./screenshots/b.png)
+![Main Dashboard](./screenshots/c.png)
 
 </details>
 
