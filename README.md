@@ -85,7 +85,7 @@ source venv/bin/activate
 ## Install dependencies:
 
 ```Bash
-pip install fastapi uvicorn graphviz jinja2 python-multipart
+pip install fastapi uvicorn graphviz jinja2 python-multipart pyragify
 ```
 ## Run the server:
 
