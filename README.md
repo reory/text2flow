@@ -31,9 +31,17 @@ A lightweight, high-performance web application that converts simple text syntax
 <details>
   <summary>📸 Screenshots</summary>
 
-![Main Dashboard](./screenshots/a.png)
-![Main Dashboard](./screenshots/b.png)
-![Main Dashboard](./screenshots/c.png)
+<table>
+  <tr>
+    <td><b>Editor View</b></td>
+    <td><b>Generated Flow</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/a.png" width="400"></td>
+    <td><img src="screenshots/b.png" width="400"></td>
+    <td><img src="screenshots/c.png" width="400"></td>
+  </tr>
+</table>
 
 </details>
 
