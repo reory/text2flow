@@ -28,7 +28,6 @@ wheels/
 *.egg
 
 # Graphviz / Image Outputs (Optional)
-*.png
 *.svg
 *.pdf
 
