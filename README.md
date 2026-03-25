@@ -165,6 +165,12 @@ text2flow/
 
 ---
 
+# 💻 Analysis
+This repository includes a config.yaml for use with **pyragify**. To generate a single-file codebase for analysis in LLMs like NotebookLM, run:
+- python -m pyragify --config-file config.yaml
+
+---
+
 <details>
   <summary>🛣️ Roadmap Features</summary>
 

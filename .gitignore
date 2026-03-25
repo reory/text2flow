@@ -31,6 +31,9 @@ wheels/
 *.svg
 *.pdf
 
+# Ignore the Pyragify output
+to_notebook/
+
 # Environments
 .env
 .venv

@@ -1,0 +1,41 @@
+# PYRAGIFY MASTER CONFIGURATION TEMPLATE
+
+# SOURCE: Where the code lives. 
+# Use absolute paths if moving the config file elsewhere.
+repo_path: "."
+
+# DESTINATION: 
+# Where the text and metadata will be saved.
+output_dir: "./to_notebook"
+
+# INCLUSION: Only process these file types. 
+# This prevents the tool from trying to read images, databases, or binaries.
+include_patterns:
+  - "*.py"
+  - "*.md"
+  - "requirements.txt"
+
+# EXCLUSION (FILES): Required by the tool's schema.
+# Use this to ignore specific file extensions or patterns within folders.
+skip_patterns:
+  - "*.exe"
+  - "*.pyc"
+  - "*.obj"
+  - ".git/*"
+
+# EXCLUSION (FOLDERS): Critical for skipping the 'venv' folder
+# This keeps your output file small and focused only on code.
+skip_dirs:
+  - "venv"
+  - ".venv"
+  - "__pycache__"
+  - ".git"
+  - ".idea"
+  - ".vscode"
+
+# LIMITS: Safety rails to prevent massive files.
+max_words: 200000        # Max words allowed in a single output chunk.
+max_file_size: 10485760  # Max size of an individual source file (10MB).
+
+# LOGGING: Set to 'true' to see exactly which files are being skipped or processed.
+verbose: true
