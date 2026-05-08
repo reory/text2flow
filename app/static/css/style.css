@@ -1,43 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-size: 28px;
+    margin-bottom: 0;
+}
+
+h2 {
+    color: #2c3e50;
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 10px;
+}
+
+.editor-container {
+    display: flex;
+    height: calc(100vh - 200px);
+    min-height: 600px;
+}
+
+.input-panel {
+    flex: 1;
+    padding: 30px;
+    border-right: 1px solid #ecf0f1;
+    overflow-y: auto;
+    background: #fafafa;
+}
+
+.preview-panel {
+    flex: 1;
+    padding: 30px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: #f4f7f6;
-    padding: 40px;
+    overflow: hidden;
 }
 
-h1 { color: #2c3e50; }
-
-textarea {
-    width: 400px;
-    height: 150px;
+.textarea {
+    width: 100%;
+    height: 250px;
     padding: 15px;
     border-radius: 8px;
-    border: 1px solid #ccc;
-    font-family: monospace;
-    font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 2px solid #bdc3c7;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    resize: vertical;
+    transition: border-color 0.3s;
 }
 
-button {
-    margin-top: 15px;
-    padding: 10px 25px;
-    background-color: #3498db;
-    color: white;
+.textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 12px 25px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.3s;
+    font-size: 14px;
+    transition: all 0.3s;
 }
 
-button:hover { background-color: #2980b9; }
+.btn-primary {
+    background-color: #27ae60;
+    color: white;
+    flex: 1;
+}
 
-#preview {
-    margin-top: 30px;
+.btn-primary:hover {
+    background-color: #229954;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+.btn-export {
+    background-color: #3498db;
+    color: white;
+    flex: 1;
+    font-size: 13px;
+    padding: 10px 15px;
+}
+
+.btn-export:hover {
+    background-color: #2980b9;
+}
+
+.format-selector {
+    margin-top: 20px;
+    padding: 15px;
     background: white;
+    border-radius: 8px;
+}
+
+.format-selector label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.format-selector select {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.preview-container {
+    flex: 1;
+    background: white;
+    border: 2px solid #ecf0f1;
+    border-radius: 8px;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.preview-placeholder {
+    color: #95a5a6;
+    font-size: 16px;
+    text-align: center;
+}
+
+.export-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.status {
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status-info {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+
+.status-success {
+    background-color: #d5f4e6;
+    color: #27ae60;
+}
+
+.status-error {
+    background-color: #fadbd8;
+    color: #e74c3c;
+}
+
+.status-warning {
+    background-color: #fdeaa8;
+    color: #f39c12;
+}
+
+.status-loading {
+    background-color: #d6eaf8;
+    color: #3498db;
+}
+
+/* SVG styling */
+svg {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .editor-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .input-panel {
+        border-right: none;
+        border-bottom: 1px solid #ecf0f1;
+    }
+
+    .textarea {
+        height: 200px;
+    }
 }

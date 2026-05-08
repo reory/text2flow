@@ -5,15 +5,47 @@
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <h1>Text2Flow</h1>
+    <div class="container">
+        <h1>Text2Flow - Convert Text to Flowcharts</h1>
 
-    <form id="diagram-form">
-        <textarea id="diagram-text" placeholder="A -> B"></textarea>
-        <button type="button" onclick="generate()">Generate</button>
-    </form>
+        <div class="editor-container">
+            <div class="input-panel">
+                <h2>Input</h2>
+                <textarea 
+                    id="diagram-text" 
+                    placeholder="Enter edges in format:&#10;A -> B -> C&#10;B -> D&#10;D -> E"
+                    class="textarea"></textarea>
+                
+                <div class="controls">
+                    <button type="button" onclick="generate()" class="btn btn-primary">Generate</button>
+                    <button type="button" onclick="clearInput()" class="btn btn-secondary">Clear</button>
+                </div>
 
-    <div id="preview">
-        <img id="preview-img" />
+                <div class="format-selector">
+                    <label for="format-select">Output Format:</label>
+                    <select id="format-select">
+                        <option value="svg">SVG (Scalable - Recommended)</option>
+                        <option value="png">PNG (Raster)</option>
+                        <option value="pdf">PDF</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="preview-panel">
+                <h2>Preview</h2>
+                <div id="preview" class="preview-container">
+                    <p class="preview-placeholder">Diagram will appear here</p>
+                </div>
+                
+                <div class="export-controls">
+                    <button type="button" onclick="downloadDiagram('svg')" class="btn btn-export">⬇ SVG</button>
+                    <button type="button" onclick="downloadDiagram('png')" class="btn btn-export">⬇ PNG</button>
+                    <button type="button" onclick="downloadDiagram('pdf')" class="btn btn-export">⬇ PDF</button>
+                </div>
+
+                <div id="status" class="status">Ready</div>
+            </div>
+        </div>
     </div>
 
     <script src="/static/js/app.js"></script>

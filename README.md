@@ -175,8 +175,6 @@ This repository includes a config.yaml for use with **pyragify**. To generate a 
 <details>
   <summary>🛣️ Roadmap Features</summary>
 
-- [ ] SVG Support: Add an option to render as SVG for infinite scaling without pixelation.
-
 - [ ] Persistence: Use a database (SQLite) to allow users to save their diagrams and get a unique URL to share them.
 
 - [ ] Dockerization: Containerize the app so that Graphviz dependencies are handled automatically regardless of the OS.
