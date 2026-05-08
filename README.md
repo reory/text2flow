@@ -146,7 +146,10 @@ text2flow/
 │   │   └── js/app.js
 │   └── templates/
 │       └── editor.html
-├── .gitignore                      
+|── screenshots/
+├── .gitignore 
+|── config.yaml
+|── gui_app.py                     
 ├── LICENSE                
 ├── README.md               
 └── requirements.txt        
@@ -206,7 +209,7 @@ This repository includes a config.yaml for use with **pyragify**. To generate a 
 
 ---
 
-* **Built by Roy Peters**
+* **Built by Roy Peters** 🙂
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Roy%20Peters-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/roy-p-74980b382/)
 
 
