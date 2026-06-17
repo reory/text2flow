@@ -41,9 +41,8 @@ A lightweight, high-performance web application that converts simple text syntax
       <td align="center"><b>View 1</b></td>
     </tr>
     <tr>
-      <td><img src="screenshots/a.png" width="300"></td>
-      <td><img src="screenshots/b.png" width="300"></td>
-      <td><img src="screenshots/c.png" width="300"></td>
+      <td><img src="screenshots/text2flowchart1.png" width="300"></td>
+      <td><img src="screenshots/text2flowchart2.png" width="300"></td>
     </tr>
   </table>
 
