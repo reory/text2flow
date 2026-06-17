@@ -176,12 +176,16 @@ This repository includes a config.yaml for use with **pyragify**. To generate a 
 
 <details>
   <summary>🛣️ Roadmap Features</summary>
+  
+  - [ ] Persistence: Use a database (SQLite) to allow users to save their diagrams and get a unique URL to share them.
 
-- [ ] Persistence: Use a database (SQLite) to allow users to save their diagrams and get a unique URL to share them.
+- [x] Export to PDF: Generate print-ready documents of the flowcharts.
 
-- [ ] Dockerization: Containerize the app so that Graphviz dependencies are handled automatically regardless of the OS.
+- [ ] Theme Engine: Pre-load built-in color palettes and styling presets (e.g., Cyberpunk, Solarized, Pastel, or Classic Dark Mode) to beautifully style entire diagrams instantly without typing manual hex codes.
 
-- [ ] Export to PDF: Generate print-ready documents of the flowcharts.
+- [ ] Real-time Live Preview: Implement an asynchronous "render-as-you-type" mechanism with a smart debounce timer, updating the canvas dynamically as the user modifies text without requiring a manual button click.
+
+- [ ] Multi-Engine Layouts: Introduce a UI dropdown to switch between alternative Graphviz layout engines (like `circo` for circular topologies, `neato` for organic networks, or `twopi` for radial structures) beyond the standard top-to-bottom flowchart
 
 </details>
 
