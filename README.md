@@ -17,7 +17,7 @@ A lightweight, high-performance web application that converts simple text syntax
 
 ---
 
-# ✨ Features
+## ✨ Features
 
 - Instant Rendering: Convert text to diagrams in real-time.
 
@@ -36,9 +36,8 @@ A lightweight, high-performance web application that converts simple text syntax
 
   <table>
     <tr>
-      <td align="center"><b>View 3</b></td>
-      <td align="center"><b>View 2</b></td>
       <td align="center"><b>View 1</b></td>
+      <td align="center"><b>View 2</b></td>
     </tr>
     <tr>
       <td><img src="screenshots/text2flowchart1.png" width="300"></td>
@@ -50,7 +49,7 @@ A lightweight, high-performance web application that converts simple text syntax
 
 ---
 
-# 🚀 Getting Started
+## 🚀 Getting Started
 
 Prerequisites
 - Python 3.8+
@@ -65,14 +64,14 @@ Prerequisites
 
 ---
 
-# ⚙️ Installation
+## ⚙️ Installation
 Clone the repository:
 
 ```Bash
 git clone https://github.com/yourusername/text2flow.git
 cd text2flow
 ```
-## Create and activate a virtual environment:
+### Create and activate a virtual environment:
 
 ```Bash
 python -m venv venv
@@ -81,18 +80,17 @@ python -m venv venv
 # macOS/Linux
 source venv/bin/activate
 ```
-## Install dependencies:
+### Install dependencies:
 
 ```Bash
 pip install fastapi uvicorn graphviz jinja2 python-multipart pyragify
 ```
-## Run the server:
+### Run the server:
 
 ```Bash
 uvicorn app.main:app --reload
-```
 Open your browser to http://127.0.0.1:8000.
-
+```
 ---
 
 <details>
@@ -128,7 +126,7 @@ Run_Tests -> Deploy
 
 ---
 
-# 🛠️ Project Structure
+## 🛠️ Project Structure
 
 ```
 text2flow/
@@ -146,6 +144,7 @@ text2flow/
 │   └── templates/
 │       └── editor.html
 |── screenshots/
+|── tests/
 ├── .gitignore 
 |── config.yaml
 |── gui_app.py                     
@@ -156,7 +155,7 @@ text2flow/
 
 ---
 
-# 🧪 Tech Stack
+## 🏭 Tech Stack
 
 * **Backend: FastAPI (Python)**
 
@@ -168,12 +167,17 @@ text2flow/
 
 ---
 
-# 💻 Analysis
+## 💻 Analysis
 This repository includes a config.yaml for use with **pyragify**. To generate a single-file codebase for analysis in LLMs like NotebookLM, run:
 - python -m pyragify --config-file config.yaml
 
 ---
 
+## 🧪 Testing
+Just type pytest in the terminal
+- pytest
+
+---
 <details>
   <summary>🛣️ Roadmap Features</summary>
   
