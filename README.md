@@ -68,7 +68,7 @@ Prerequisites
 Clone the repository:
 
 ```Bash
-git clone https://github.com/yourusername/text2flow.git
+git clone https://github.com/reory/text2flow.git
 cd text2flow
 ```
 ### Create and activate a virtual environment:
