@@ -2,11 +2,12 @@
 # /api/render → returns PNG/SVG.
 # Logger tracks incoming requests and errors.
 
-from fastapi import APIRouter, Response
+from fastapi import APIRouter, HTTPException, Response
 from pydantic import BaseModel
+
+from app.services.logger import logger
 from app.services.parser import parse_edges
 from app.services.renderer import render_flowchart
-from app.services.logger import logger
 
 router = APIRouter(prefix="/api")
 
@@ -48,7 +49,7 @@ def render_diagram(payload: RenderRequest):
         logger.warning(f"Validation failed {ve}")
         return Response(content=str(ve), status_code=400)
 
-    except Exception as e:
+    except (HTTPException, RuntimeError) as e:
         # Log an error
         logger.error(f"System error during rendering: {e}", exc_info=True)
         # Return a 500 error

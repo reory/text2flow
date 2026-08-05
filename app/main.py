@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from app.routers import ui, api
+from app.routers import api, ui
 
 app = FastAPI(title="Text2Flow")
 

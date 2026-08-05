@@ -1,5 +1,7 @@
 from unittest.mock import MagicMock, mock_open, patch
+
 import pytest  # noqa
+
 from gui_app import constants as c
 from gui_app.handlers.export import export_diagram, get_export_format_config
 
@@ -55,7 +57,7 @@ def test_export_diagram_io_exception_catch(mock_render):
 
     fake_file_system = mock_open()
     # Simulate a file writing crash (e.g., OS permission denied error)
-    fake_file_system().write.side_effect = IOError(
+    fake_file_system().write.side_effect = OSError(
         "Permission denied writing to protected folder"
     )
 

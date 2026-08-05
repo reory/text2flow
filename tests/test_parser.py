@@ -1,6 +1,8 @@
 import pytest
-from hypothesis import given, strategies as st
-from app.services.parser import parse_edges, ParsedDiagram
+from hypothesis import given
+from hypothesis import strategies as st
+
+from app.services.parser import ParsedDiagram, parse_edges
 
 
 def test_parse_basic_edges():

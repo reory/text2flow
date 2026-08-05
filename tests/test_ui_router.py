@@ -1,10 +1,12 @@
 """Unit and integration tests targeting the web UI presentation router."""
 
 from unittest.mock import MagicMock
+
+import pytest  # noqa
 from fastapi import FastAPI, Request
 from fastapi.testclient import TestClient
-import pytest  # noqa
-from app.routers.ui import router, get_templates
+
+from app.routers.ui import get_templates, router
 
 
 def test_get_templates_helper_execution():

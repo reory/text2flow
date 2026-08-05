@@ -3,9 +3,9 @@ Text2Flow GUI - Tkinter-based desktop application
 Allows users to create and render flowcharts with SVG/PNG output
 """
 
-import tkinter as tk
 import os
 import sys
+import tkinter as tk
 
 # Add app to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

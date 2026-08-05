@@ -1,14 +1,16 @@
 """Unit tests targeting the layout configurations and headless widget creation chains."""
 
-from unittest.mock import MagicMock, patch
-import pytest  # noqa
 import tkinter as tk
+from unittest.mock import MagicMock, patch
+
+import pytest  # noqa
+
 from gui_app import constants as c
 from gui_app.ui import (
     create_header,
     create_left_panel,
-    create_right_panel,
     create_main_layout,
+    create_right_panel,
     create_status_bar,
 )
 
@@ -54,13 +56,28 @@ def test_create_left_panel_inputs(mock_scrolled, mock_button, mock_label, mock_f
 
     left_panel, text_input = create_left_panel(parent, render_cb, clear_cb)
 
+    # Verify two frames created
+    assert mock_frame.call_count == 2
+
+    # Verify outer left_panel frame creation
+    outer_args, outer_kwargs = mock_frame.call_args_list[0]
+    assert outer_args == (parent,)
+    assert outer_kwargs == {"bg": c.PANEL_BG, "relief": tk.SUNKEN, "bd": 1}
+
+    # Verify inner button_frame creation
+    inner_args, inner_kwargs = mock_frame.call_args_list[1]
+    assert inner_args == (left_panel,)
+    assert inner_kwargs == {"bg": c.PANEL_BG}
+
+    assert left_panel == mock_frame.return_value
+
     # Verify core input field setup and text insertion
     mock_scrolled.return_value.insert.assert_called_once_with(
         tk.END, c.DEFAULT_INPUT_TEXT
     )
     assert text_input == mock_scrolled.return_value
 
-    # Verify that action execution buttons were mounted with correct callbacks
+    # Verify action execution buttons mounted with correct callbacks
     assert mock_button.call_count == 2
 
     # Validate 'Render' button specifications
@@ -90,12 +107,27 @@ def test_create_right_panel_preview(mock_canvas, mock_button, mock_label, mock_f
 
     right_panel, canvas = create_right_panel(parent, export_cb, mousewheel_cb)
 
+    # Verify two frames created
+    assert mock_frame.call_count == 2
+
+    # Verify outer right_panel frame creation
+    outer_args, outer_kwargs = mock_frame.call_args_list[0]
+    assert outer_args == (parent,)
+    assert outer_kwargs == {"bg": c.PANEL_BG, "relief": tk.SUNKEN, "bd": 1}
+
+    # Verify inner export_frame creation
+    inner_args, inner_kwargs = mock_frame.call_args_list[1]
+    assert inner_args == (right_panel,)
+    assert inner_kwargs == {"bg": c.PANEL_BG}
+
+    assert right_panel == mock_frame.return_value
+
     # Verify canvas interactivity bindings are wired up
     assert mock_canvas.return_value.bind.call_count == 3
     mock_canvas.return_value.bind.assert_any_call("<MouseWheel>", mousewheel_cb)
     assert canvas == mock_canvas.return_value
 
-    # Verify file conversion elements and execute lambda callbacks for full test coverage
+    # Verify file conversion elements and execute lambda callbacks
     assert mock_button.call_count == 3
     target_formats = ["svg", "png", "pdf"]
 
@@ -115,7 +147,7 @@ def test_create_right_panel_preview(mock_canvas, mock_button, mock_label, mock_f
 def test_create_main_layout_orchestration(
     mock_frame, mock_right, mock_left, mock_header
 ):
-    """Verify that layout sub-components arrange within the main engine framework."""
+    """Verify layout sub-components arrange within the main engine framework."""
 
     root = MagicMock()
     render_cb, clear_cb, export_cb, mw_cb = (
@@ -132,7 +164,7 @@ def test_create_main_layout_orchestration(
 
     # Ensure nested elements are initialized
     mock_header.assert_called_once_with(root)
-    mock_frame.assert_called_once()
+    mock_frame.assert_called_once_with(root, bg=c.MAIN_BG)
     mock_left.assert_called_once()
     mock_right.assert_called_once()
 

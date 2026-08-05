@@ -1,9 +1,11 @@
 """Unit tests targeting the UI background threading and canvas render handler handlers."""
 
 from unittest.mock import MagicMock, patch
+
 import pytest  # noqa
+
 from gui_app import constants as c
-from gui_app.handlers.render import render_flowchart_thread, display_svg_preview
+from gui_app.handlers.render import display_svg_preview, render_flowchart_thread
 
 
 @patch("gui_app.handlers.render.parse_edges")
