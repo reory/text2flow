@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #d5dadf 0%, #8a99a8 100%);
     min-height: 100vh;
     padding: 20px;
 }
@@ -14,26 +14,29 @@ body {
 .container {
     max-width: 1400px;
     margin: 0 auto;
-    background: white;
+    background: #f4f6f8;
     border-radius: 10px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    border: 1px solid #cbd5e1;
     overflow: hidden;
 }
 
 h1 {
-    color: white;
+    color: #1e293b;
     text-align: center;
     padding: 30px 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
     font-size: 28px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+    border-bottom: 2px solid #64748b;
     margin-bottom: 0;
 }
 
 h2 {
-    color: #2c3e50;
+    color: #334155;
     font-size: 18px;
     margin-bottom: 15px;
-    border-bottom: 2px solid #e74c3c;
+    border-bottom: 2px solid #94a3b8;
     padding-bottom: 10px;
 }
 
@@ -46,9 +49,9 @@ h2 {
 .input-panel {
     flex: 1;
     padding: 30px;
-    border-right: 1px solid #ecf0f1;
+    border-right: 1px solid #cbd5e1;
     overflow-y: auto;
-    background: #fafafa;
+    background: #eef2f6;
 }
 
 .preview-panel {
@@ -57,6 +60,7 @@ h2 {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    background: #f8fafc;
 }
 
 .textarea {
@@ -64,7 +68,8 @@ h2 {
     height: 250px;
     padding: 15px;
     border-radius: 8px;
-    border: 2px solid #bdc3c7;
+    border: 2px solid #94a3b8;
+    background: #ffffff;
     font-family: 'Courier New', monospace;
     font-size: 14px;
     resize: vertical;
@@ -73,7 +78,8 @@ h2 {
 
 .textarea:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: #475569;
+    box-shadow: 0 0 5px rgba(71, 85, 105, 0.3);
 }
 
 .controls {
@@ -94,65 +100,72 @@ h2 {
 }
 
 .btn-primary {
-    background-color: #27ae60;
+    background: linear-gradient(135deg, #64748b 0%, #475569 100%);
     color: white;
     flex: 1;
+    border: 1px solid #334155;
 }
 
 .btn-primary:hover {
-    background-color: #229954;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);
+    background: linear-gradient(135deg, #475569 0%, #334155 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(71, 85, 105, 0.3);
 }
 
 .btn-secondary {
-    background-color: #95a5a6;
+    background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
     color: white;
+    border: 1px solid #475569;
 }
 
 .btn-secondary:hover {
-    background-color: #7f8c8d;
+    background: linear-gradient(135deg, #64748b 0%, #475569 100%);
 }
 
 .btn-export {
-    background-color: #3498db;
-    color: white;
+    background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+    color: #1e293b;
     flex: 1;
     font-size: 13px;
     padding: 10px 15px;
+    border: 1px solid #64748b;
+    font-weight: 600;
 }
 
 .btn-export:hover {
-    background-color: #2980b9;
+    background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+    color: white;
 }
 
 .format-selector {
     margin-top: 20px;
     padding: 15px;
-    background: white;
+    background: #ffffff;
     border-radius: 8px;
+    border: 1px solid #cbd5e1;
 }
 
 .format-selector label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
-    color: #2c3e50;
+    color: #334155;
 }
 
 .format-selector select {
     width: 100%;
     padding: 10px;
-    border: 2px solid #bdc3c7;
+    border: 2px solid #94a3b8;
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
+    background: #f8fafc;
 }
 
 .preview-container {
     flex: 1;
     background: white;
-    border: 2px solid #ecf0f1;
+    border: 2px solid #94a3b8;
     border-radius: 8px;
     padding: 20px;
     overflow: auto;
@@ -169,7 +182,7 @@ h2 {
 }
 
 .preview-placeholder {
-    color: #95a5a6;
+    color: #64748b;
     font-size: 16px;
     text-align: center;
 }
@@ -189,38 +202,37 @@ h2 {
 }
 
 .status-info {
-    background-color: #ecf0f1;
-    color: #2c3e50;
+    background-color: #e2e8f0;
+    color: #334155;
 }
 
 .status-success {
-    background-color: #d5f4e6;
-    color: #27ae60;
+    background-color: #e2e8f0;
+    color: #0f766e;
+    border: 1px solid #94a3b8;
 }
 
 .status-error {
-    background-color: #fadbd8;
-    color: #e74c3c;
+    background-color: #fee2e2;
+    color: #991b1b;
 }
 
 .status-warning {
-    background-color: #fdeaa8;
-    color: #f39c12;
+    background-color: #fef3c7;
+    color: #92400e;
 }
 
 .status-loading {
-    background-color: #d6eaf8;
-    color: #3498db;
+    background-color: #e0f2fe;
+    color: #0369a1;
 }
 
-/* SVG styling */
 svg {
     max-width: 100%;
     max-height: 100%;
     display: block;
 }
 
-/* Responsive design */
 @media (max-width: 1024px) {
     .editor-container {
         flex-direction: column;
@@ -229,7 +241,7 @@ svg {
 
     .input-panel {
         border-right: none;
-        border-bottom: 1px solid #ecf0f1;
+        border-bottom: 1px solid #cbd5e1;
     }
 
     .textarea {

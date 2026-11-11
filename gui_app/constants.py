@@ -1,15 +1,15 @@
 """UI Constants and Configuration"""
 
-# Colors
-HEADER_BG = "#2c3e50"
-MAIN_BG = "#f0f0f0"
-PANEL_BG = "white"
-TEXT_FG = "#2c3e50"
+# Metallic & Gunmetal Colors
+HEADER_BG = "#334155"        # Dark metallic slate
+MAIN_BG = "#cbd5e1"          # Brushed silver background
+PANEL_BG = "#f8fafc"         # Clean light chrome panel
+TEXT_FG = "#1e293b"          # Deep charcoal text
 TEXT_FG_WHITE = "white"
-BTN_RENDER_BG = "#27ae60"
-BTN_CLEAR_BG = "#e74c3c"
-BTN_EXPORT_BG = "#3498db"
-STATUS_BG = "#ecf0f1"
+BTN_RENDER_BG = "#475569"    # Steel gray render button
+BTN_CLEAR_BG = "#64748b"     # Muted gray-blue clear button
+BTN_EXPORT_BG = "#94a3b8"    # Metallic silver export button
+STATUS_BG = "#e2e8f0"        # Light metallic bar
 
 # Fonts
 FONT_TITLE = ("Arial", 16, "bold")
