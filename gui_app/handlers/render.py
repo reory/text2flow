@@ -5,7 +5,6 @@ from app.services.renderer import render_flowchart
 from gui_app.constants import *
 
 
-# ruff: noqa
 def render_flowchart_thread(text, on_success, on_error):
     """Background rendering thread handler."""
 
@@ -21,7 +20,9 @@ def render_flowchart_thread(text, on_success, on_error):
 
     except ValueError as e:
         on_error("ValueError", str(e), STATUS_ERROR_PARSE)
-    except Exception as e:
+    except (RuntimeError, OSError) as e:
+        on_error("SystemError", str(e), STATUS_ERROR_RENDER)
+    except Exception as e: # noqa: BLE001
         on_error("Exception", str(e), STATUS_ERROR_RENDER)
 
 
@@ -46,5 +47,5 @@ def display_svg_preview(canvas, svg_bytes):
 
         return True, STATUS_SVG_READY
 
-    except Exception as e:
-        return False, f"Display error: {str(e)}"
+    except Exception as e: # noqa: BLE001
+        return False, f"Display error: {e!s}"

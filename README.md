@@ -244,13 +244,15 @@ uv run pytest
 
 - [x] Export to PDF: Generate print-ready documents of the flowcharts.
 
-- [ ] Persistence: Use a database (SQLite) to allow users to save their diagrams and get a unique URL to share them.
+- [ ] Multi-Engine Layouts: Introduce a UI dropdown to switch between alternative Graphviz layout engines
 
-- [ ] Theme Engine: Pre-load built-in color palettes and styling presets (e.g., Cyberpunk, Solarized, Pastel, or Classic Dark Mode) to beautifully style entire diagrams instantly without typing manual hex codes.
+- [ ] Theme Preset Engine: Pre-load built-in color palettes and styling presets (e.g., Cyberpunk, Solarized, Pastel, or Classic Dark Mode) to beautifully style entire diagrams instantly without typing manual hex codes.
+
+- [ ] CLI Batch Processing Tool: Expose a command-line interface command (text2flow render input.txt -o output.pdf) so developers can automate diagram generation directly inside their build scripts or CI/CD pipelines.
 
 - [ ] Real-time Live Preview: Implement an asynchronous "render-as-you-type" mechanism with a smart debounce timer, updating the canvas dynamically as the user modifies text without requiring a manual button click.
 
-- [ ] Multi-Engine Layouts: Introduce a UI dropdown to switch between alternative Graphviz layout engines (like `circo` for circular topologies, `neato` for organic networks, or `twopi` for radial structures) beyond the standard top-to-bottom flowchart
+- [ ] Export as Clean, Layered SVGs: Structure generated SVG exports with clean, grouped CSS classes and layer IDs so users can easily open and tweak vector elements in external design tools.
 
 </details>
 
