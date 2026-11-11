@@ -4,7 +4,8 @@ let currentFormat = null;
 async function generate() {
     const text = document.getElementById("diagram-text").value;
     const format = document.getElementById("format-select").value;
-    
+    const engine = document.getElementById("engine-select").value;
+
     if (!text.trim()) {
         updateStatus("⚠ Please enter some text", "warning");
         return;
@@ -16,7 +17,7 @@ async function generate() {
         const response = await fetch("/api/render", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ text, format })
+            body: JSON.stringify({ text, format, engine })
         });
 
         if (response.ok) {
@@ -50,6 +51,7 @@ async function generate() {
 
 async function downloadDiagram(format) {
     const text = document.getElementById("diagram-text").value;
+    const engine = document.getElementById("engine-select").value;
     
     if (!text.trim()) {
         alert("Please enter some text first");
@@ -62,7 +64,7 @@ async function downloadDiagram(format) {
         const response = await fetch("/api/render", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ text, format })
+            body: JSON.stringify({ text, format, engine })
         });
 
         if (response.ok) {

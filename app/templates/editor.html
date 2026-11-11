@@ -22,6 +22,17 @@
                 </div>
 
                 <div class="format-selector">
+                    <label for="engine-select">Layout Engine:</label>
+                    <select id="engine-select">
+                        <option value="dot">Dot (Hierarchical - Default)</option>
+                        <option value="neato">Neato (Spring-model / Organic)</option>
+                        <option value="circo">Circo (Circular)</option>
+                        <option value="twopi">Twopi (Radial)</option>
+                        <option value="fdp">Fdp (Force-directed)</option>
+                    </select>
+                </div>
+
+                <div class="format-selector">
                     <label for="format-select">Output Format:</label>
                     <select id="format-select">
                         <option value="svg">SVG (Scalable - Recommended)</option>
@@ -48,6 +59,6 @@
         </div>
     </div>
 
-    <script src="/static/js/app.js"></script>
+    <script src="/static/js/app.js?v=2"></script>
 </body>
 </html>

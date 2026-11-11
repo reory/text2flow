@@ -21,3 +21,11 @@ dependencies = [
 [tool.pytest.ini_options]
 pythonpath = "."
 testpaths = ["tests"]
+
+addopts = [
+    "--cov=app",
+    "--cov=gui_app",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-branch",
+]

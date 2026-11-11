@@ -6,7 +6,7 @@ import threading
 
 from gui_app.constants import *
 from gui_app.ui import create_main_layout, create_status_bar
-from gui_app.handlers.render import render_flowchart_thread, display_svg_preview
+from gui_app.handlers.render import render_flowchart_thread, display_img_preview
 from gui_app.handlers.export import export_diagram, get_export_format_config
 
 
@@ -22,6 +22,7 @@ class Text2FlowGUI:
 
         self.current_svg = None
         self.current_edges = None
+        self.engine_var = tk.StringVar(value="dot")
 
         # Initialize UI
         self.status_var = tk.StringVar(value=STATUS_READY)
@@ -37,6 +38,7 @@ class Text2FlowGUI:
             clear_callback=self.clear_input,
             export_callback=self.export_diagram,
             on_mousewheel_callback=self.on_mousewheel,
+            engine_var=self.engine_var,
         )
 
         # Create status bar
@@ -46,6 +48,7 @@ class Text2FlowGUI:
         """Render flowchart (entry point)"""
 
         text = self.text_input.get("1.0", tk.END).strip()
+        engine = self.engine_var.get()
 
         if not text:
             messagebox.showwarning(ERROR_DIALOG_PARSE, ERROR_NO_INPUT)
@@ -56,22 +59,25 @@ class Text2FlowGUI:
         self.root.update()
 
         # Run rendering in background thread
-        thread = threading.Thread(target=self._render_background, args=(text,))
+        thread = threading.Thread(target=self._render_background, args=(text, engine))
         thread.daemon = True
         thread.start()
 
-    def _render_background(self, text):
+    def _render_background(self, text, engine):
         """Background rendering execution"""
 
-        def on_success(svg_bytes, edges, edge_count):
+        def on_success(img_bytes, edges, edge_count):
             """Handle successful rendering"""
 
-            self.current_svg = svg_bytes
             self.current_edges = edges
 
-            # Display preview
-            success, message = display_svg_preview(self.canvas, svg_bytes)
-            self.status_var.set(STATUS_SUCCESS.format(edge_count))
+            # Display PNG preview on canvas
+            success, message = display_img_preview(self.canvas, img_bytes)
+            if success:
+                self.status_var.set(STATUS_SUCCESS.format(edge_count))
+            else:
+                messagebox.showerror("Preview Display Error", message)
+                self.status_var.set("Display failed")
             self.root.update()
 
         def on_error(error_type, error_message, status_msg):
@@ -86,7 +92,7 @@ class Text2FlowGUI:
         self.root.update()
 
         # Perform rendering
-        render_flowchart_thread(text, on_success, on_error)
+        render_flowchart_thread(text, engine, on_success, on_error)
 
     def export_diagram(self, format_type):
         """Export diagram (entry point)"""

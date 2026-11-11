@@ -53,11 +53,17 @@ def test_create_left_panel_inputs(mock_scrolled, mock_button, mock_label, mock_f
     parent = MagicMock()
     render_cb = MagicMock()
     clear_cb = MagicMock()
+    engine_var = MagicMock()
 
-    left_panel, text_input = create_left_panel(parent, render_cb, clear_cb)
+    left_panel, text_input = create_left_panel(
+        parent, 
+        render_cb, 
+        clear_cb, 
+        engine_var
+    )
 
     # Verify two frames created
-    assert mock_frame.call_count == 2
+    assert mock_frame.call_count == 3
 
     # Verify outer left_panel frame creation
     outer_args, outer_kwargs = mock_frame.call_args_list[0]
@@ -157,10 +163,19 @@ def test_create_main_layout_orchestration(
         MagicMock(),
     )
 
+    engine_var = MagicMock()
+
     mock_left.return_value = (MagicMock(), "mock_text_input")
     mock_right.return_value = (MagicMock(), "mock_canvas")
 
-    txt, canv = create_main_layout(root, render_cb, clear_cb, export_cb, mw_cb)
+    txt, canv = create_main_layout(
+        root, 
+        render_cb, 
+        clear_cb, 
+        export_cb, 
+        mw_cb,
+        engine_var,
+    )
 
     # Ensure nested elements are initialized
     mock_header.assert_called_once_with(root)

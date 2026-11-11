@@ -22,8 +22,8 @@ def create_header(root):
     return header
 
 
-def create_left_panel(parent, render_callback, clear_callback):
-    """Create left input panel"""
+def create_left_panel(parent, render_callback, clear_callback, engine_var):
+    """Create left input panel with engine selector."""
 
     left_panel = tk.Frame(parent, bg=PANEL_BG, relief=tk.SUNKEN, bd=1)
     left_panel.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 5))
@@ -36,8 +36,21 @@ def create_left_panel(parent, render_callback, clear_callback):
     text_input = scrolledtext.ScrolledText(
         left_panel, width=40, height=20, font=FONT_INPUT, wrap=tk.WORD
     )
+    
     text_input.pack(fill=tk.BOTH, expand=True, padx=PADX_INNER, pady=(0, 10))
     text_input.insert(tk.END, DEFAULT_INPUT_TEXT)
+
+    # Engine Selector Frame
+    engine_frame = tk.Frame(left_panel, bg=PANEL_BG)
+    engine_frame.pack(fill=tk.X, padx=PADX_INNER, pady=(0, 5))
+
+    tk.Label(engine_frame, text=ENGINE_LABEL, font=FONT_LABEL_SMALL, bg=PANEL_BG).pack(
+        side=tk.LEFT, padx=(0, 10)
+    )
+
+    engine_dropdown = tk.OptionMenu(engine_frame, engine_var, *LAYOUT_ENGINES)
+    engine_dropdown.config(bg=PANEL_BG, font=FONT_LABEL_SMALL, width=12)
+    engine_dropdown.pack(side=tk.LEFT, fill=tk.X)
 
     # Button frame
     button_frame = tk.Frame(left_panel, bg=PANEL_BG)
@@ -137,7 +150,12 @@ def create_right_panel(parent, export_callback, on_mousewheel_callback):
 
 
 def create_main_layout(
-    root, render_callback, clear_callback, export_callback, on_mousewheel_callback
+    root, 
+    render_callback, 
+    clear_callback, 
+    export_callback, 
+    on_mousewheel_callback,
+    engine_var,
 ):
     """Create entire main layout"""
 
@@ -150,7 +168,7 @@ def create_main_layout(
 
     # Left and right panels
     left_panel, text_input = create_left_panel(
-        main_container, render_callback, clear_callback
+        main_container, render_callback, clear_callback, engine_var
     )
     right_panel, canvas = create_right_panel(
         main_container, export_callback, on_mousewheel_callback

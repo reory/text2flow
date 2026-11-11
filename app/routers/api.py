@@ -18,6 +18,7 @@ router = APIRouter(prefix="/api")
 class RenderRequest(BaseModel):
     text: str
     format: str = "png"
+    engine: str = "dot"
 
 
 @router.post("/render")
@@ -27,13 +28,16 @@ def render_diagram(payload: RenderRequest):
     # Extract data from our Pydantic payload
     text = payload.text
     format = payload.format
+    engine = payload.engine
 
     # Log first 50 characters
-    logger.info(f"Render requested for input: {text[:50]} (format: {format})")
+    logger.info(
+        f"Render requested for input: {text[:50]} (format: {format}, engine: {engine})"
+    )
 
     try:
         edges = parse_edges(text)
-        image_bytes = render_flowchart(edges, format=format)
+        image_bytes = render_flowchart(edges, format=format, engine=engine)
         logger.info(f"Successfully rendered {len(edges)} edges as {format}.")
 
         # Set appropriate media type based on format

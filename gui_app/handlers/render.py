@@ -1,19 +1,21 @@
 """Rendering Handler"""
 
+import tkinter as tk
+
 from app.services.parser import parse_edges
 from app.services.renderer import render_flowchart
 from gui_app.constants import *
 
 
-def render_flowchart_thread(text, on_success, on_error):
+def render_flowchart_thread(text, engine, on_success, on_error):
     """Background rendering thread handler."""
 
     try:
         # Parse edges
         edges = parse_edges(text)
 
-        # Render as SVG
-        image_bytes = render_flowchart(edges, format="svg")
+        # Render as PNG
+        image_bytes = render_flowchart(edges, format="png", engine=engine)
 
         # Call success callback
         on_success(image_bytes, edges, len(edges))
@@ -26,23 +28,24 @@ def render_flowchart_thread(text, on_success, on_error):
         on_error("Exception", str(e), STATUS_ERROR_RENDER)
 
 
-def display_svg_preview(canvas, svg_bytes):
-    """Display SVG preview in canvas."""
+def display_img_preview(canvas, image_bytes):
+    """Display PNG preview on canvas."""
 
     try:
-        svg_text = svg_bytes.decode("utf-8")
 
         # Clear canvas
         canvas.delete("all")
 
+        img = tk.PhotoImage(data=image_bytes)
+
+        canvas.image = img
+
         # Create info text
-        info_text = f"SVG Flowchart\n({len(svg_text)} bytes)"
-        canvas.create_text(
+        canvas.create_image(
             canvas.winfo_width() // 2,
             canvas.winfo_height() // 2,
-            text=info_text,
-            font=("Arial", 14),
-            fill=TEXT_FG,
+            image=img,
+            anchor=tk.CENTER,
         )
 
         return True, STATUS_SVG_READY

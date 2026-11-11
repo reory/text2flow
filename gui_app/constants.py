@@ -68,3 +68,7 @@ PADX_MAIN = 10
 PADY_MAIN = 10
 PADX_INNER = 10
 PADY_INNER = 5
+
+# Layout Engines
+LAYOUT_ENGINES = ["dot", "neato", "circo", "twopi", "fdp"]
+ENGINE_LABEL = "Layout Engine:"

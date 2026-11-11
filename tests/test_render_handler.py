@@ -1,11 +1,12 @@
 """Unit tests targeting the UI background threading and canvas render handler handlers."""
 
+import tkinter as tk
 from unittest.mock import MagicMock, patch
 
 import pytest  # noqa
 
 from gui_app import constants as c
-from gui_app.handlers.render import display_svg_preview, render_flowchart_thread
+from gui_app.handlers.render import display_img_preview, render_flowchart_thread
 
 
 @patch("gui_app.handlers.render.parse_edges")
@@ -22,11 +23,15 @@ def test_render_flowchart_thread_success(mock_render, mock_parse):
     mock_parse.return_value = [("A", "B"), ("B", "C")]
     mock_render.return_value = b"<svg>mock_output</svg>"
 
-    render_flowchart_thread("A -> B -> C", on_success, on_error)
+    render_flowchart_thread("A -> B -> C", "dot", on_success, on_error)
 
     # Confirm core services were executed correctly
     mock_parse.assert_called_once_with("A -> B -> C")
-    mock_render.assert_called_once_with([("A", "B"), ("B", "C")], format="svg")
+    mock_render.assert_called_once_with(
+        [("A", "B"), ("B", "C")], 
+        format="png",
+        engine="dot",
+    )
 
     # Confirm the success closure callback fired with expected counts
     on_success.assert_called_once_with(
@@ -44,7 +49,7 @@ def test_render_flowchart_thread_validation_failure(mock_parse):
 
     mock_parse.side_effect = ValueError("Syntax error: dangling relationship link")
 
-    render_flowchart_thread("A ->", on_success, on_error)
+    render_flowchart_thread("A ->", "dot", on_success, on_error)
 
     on_success.assert_not_called()
     on_error.assert_called_once_with(
@@ -64,42 +69,48 @@ def test_render_flowchart_thread_generic_system_crash(mock_parse):
 
     mock_parse.side_effect = Exception("System environment out of memory breakdown")
 
-    render_flowchart_thread("A -> B", on_success, on_error)
+    render_flowchart_thread("A -> B", "dot", on_success, on_error)
 
     on_success.assert_not_called()
     on_error.assert_called_once_with(
         "Exception", "System environment out of memory breakdown", c.STATUS_ERROR_RENDER
     )
 
-
-def test_display_svg_preview_success():
+@patch("gui_app.handlers.render.tk.PhotoImage")
+def test_display_img_preview_success(mock_photo):
     """
     Verify vector raw bytes parse into textual
     notifications inside the window grid.
     """
+
+    mock_image = MagicMock()
+    mock_photo.return_value = mock_image
+
     canvas = MagicMock()
     # Stub out dimensions so floor division computations don't throw TypeErrors
     canvas.winfo_width.return_value = 800
     canvas.winfo_height.return_value = 600
 
-    success, message = display_svg_preview(canvas, b"<svg>test_payload</svg>")
+    success, message = display_img_preview(
+        canvas, b"fake_png_binary_bytes"
+    )
 
     assert success is True
     assert message == c.STATUS_SVG_READY
 
-    # Ensure canvas actions scrubbed previous prints and rendered text in the center
+    # Ensure canvas actions scrubbed previous prints and rendered image in the center
     canvas.delete.assert_called_once_with("all")
-    canvas.create_text.assert_called_once()
+    canvas.create_image.assert_called_once_with(
+        400,
+        300,
+        image=mock_image,
+        anchor=tk.CENTER,
+    )
 
-    args, kwargs = canvas.create_text.call_args
-    assert args == (400, 300)  # Checked center positioning math (800 // 2, 600 // 2)
-
-    # Assert against the rendered byte size metadata string, not the text content
-    assert "23 bytes" in kwargs["text"]
-    assert "SVG Flowchart" in kwargs["text"]
+    assert canvas.image is mock_image
 
 
-def test_display_svg_preview_exception_catch():
+def test_display_img_preview_exception_catch():
     """
     Verify canvas failures return an error notification tuple
     gracefully instead of blowing up.
@@ -111,7 +122,7 @@ def test_display_svg_preview_exception_catch():
         "Tkinter context destroyed or dead thread context"
     )
 
-    success, message = display_svg_preview(canvas, b"<svg>data</svg>")
+    success, message = display_img_preview(canvas, b"<svg>data</svg>")
 
     assert success is False
     assert "Display error: Tkinter context destroyed" in message

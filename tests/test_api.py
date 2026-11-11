@@ -32,7 +32,7 @@ def test_render_diagram_success_png(mock_render, mock_parse):
     assert response.headers["content-type"] == "image/png"
 
     mock_parse.assert_called_once_with("A -> B")
-    mock_render.assert_called_once_with([("A", "B")], format="png")
+    mock_render.assert_called_once_with([("A", "B")], format="png", engine="dot")
 
 
 @patch("app.routers.api.parse_edges")

@@ -6,10 +6,10 @@ import gui_app.constants as c
 def test_visual_theme_constants():
     """Verify that user interface theme assets and color hexes are bound properly."""
 
-    assert c.HEADER_BG == "#2c3e50"
-    assert c.MAIN_BG == "#f0f0f0"
-    assert c.BTN_RENDER_BG == "#27ae60"
-    assert c.BTN_CLEAR_BG == "#e74c3c"
+    assert c.HEADER_BG == "#334155"
+    assert c.MAIN_BG == "#cbd5e1"
+    assert c.BTN_RENDER_BG == "#475569"
+    assert c.BTN_CLEAR_BG == "#64748b"
 
 
 def test_window_and_layout_dimensions():
