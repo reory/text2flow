@@ -14,6 +14,7 @@ class ParsedDiagram(list):
 
 
 def parse_edges(text: str):
+    """Parse text input into relationship edges and node styling attributes."""
 
     nodes = {}
     edges = []

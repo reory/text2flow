@@ -75,6 +75,7 @@ def test_get_export_format_config_valid_match():
     Verify configuration tuple lookups map out extensions matching
     configuration constants.
     """
+
     default_ext, file_types = get_export_format_config("png")
 
     assert default_ext == ".png"

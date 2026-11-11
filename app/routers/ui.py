@@ -1,6 +1,8 @@
-# Handles the browser-facing routes:
-# Editor page
-# Preview → returns rendered PNG for preview
+"""
+Handles the browser-facing routes:
+Editor page
+Preview → returns rendered PNG for preview
+"""
 
 from fastapi import APIRouter, Request
 
@@ -12,6 +14,7 @@ def get_templates(request: Request):
 
 @router.get("/")
 def editor(request: Request):
+    """Render and return the primary Text2Flow editor HTML template interface."""
 
     templates = request.app.state.templates
     

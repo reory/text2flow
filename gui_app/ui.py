@@ -9,6 +9,7 @@ from gui_app.constants import *
 # ruff: noqa
 def create_header(root):
     """Create header frame with title"""
+
     header = tk.Frame(root, bg=HEADER_BG, height=50)
     header.pack(fill=tk.X, padx=0, pady=0)
     header.pack_propagate(False)
@@ -23,6 +24,7 @@ def create_header(root):
 
 def create_left_panel(parent, render_callback, clear_callback):
     """Create left input panel"""
+
     left_panel = tk.Frame(parent, bg=PANEL_BG, relief=tk.SUNKEN, bd=1)
     left_panel.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=(0, 5))
 
@@ -70,6 +72,7 @@ def create_left_panel(parent, render_callback, clear_callback):
 
 def create_right_panel(parent, export_callback, on_mousewheel_callback):
     """Create right preview and export panel"""
+
     right_panel = tk.Frame(parent, bg=PANEL_BG, relief=tk.SUNKEN, bd=1)
     right_panel.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=(5, 0))
 
@@ -137,6 +140,7 @@ def create_main_layout(
     root, render_callback, clear_callback, export_callback, on_mousewheel_callback
 ):
     """Create entire main layout"""
+
     # Header
     create_header(root)
 
@@ -157,6 +161,7 @@ def create_main_layout(
 
 def create_status_bar(root, status_var):
     """Create status bar"""
+
     status_bar = tk.Label(
         root, textvariable=status_var, bg=STATUS_BG, anchor=tk.W, padx=10, pady=5
     )

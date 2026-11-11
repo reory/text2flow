@@ -15,6 +15,7 @@ from gui_app.app import Text2FlowGUI
 
 def main():
     """Entry point for GUI application"""
+
     root = tk.Tk()
     Text2FlowGUI(root)
     root.mainloop()

@@ -1,6 +1,8 @@
-# Handles programmatic endpoints:
-# /api/render → returns PNG/SVG.
-# Logger tracks incoming requests and errors.
+"""
+Handles programmatic endpoints:
+/api/render → returns PNG/SVG.
+Logger tracks incoming requests and errors.
+"""
 
 from fastapi import APIRouter, HTTPException, Response
 from pydantic import BaseModel

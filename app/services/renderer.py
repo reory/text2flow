@@ -7,6 +7,7 @@ def render_flowchart(edges, format: str = "png"):
     """
     Render flowchart to specified format (png, svg, pdf, etc.)
     """
+
     dot = Digraph(format=format)
     dot.attr(rankdir="TB")  # TB Top to Bottom layout
 

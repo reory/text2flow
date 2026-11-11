@@ -1,6 +1,4 @@
 """Unit tests targeting the GUI constants and style configurations."""
-# Validating that the layout numbers and dictionary mappings
-# don't accidentally get altered down the road.
 
 import gui_app.constants as c
 

@@ -20,6 +20,7 @@ client = TestClient(app, raise_server_exceptions=False)
 @patch("app.routers.api.render_flowchart")
 def test_render_diagram_success_png(mock_render, mock_parse):
     """Verify successful rendering of PNG flowcharts returns a 200 status code."""
+
     mock_parse.return_value = [("A", "B")]
     mock_render.return_value = b"fake_png_binary_bytes"
 

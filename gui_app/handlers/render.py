@@ -7,13 +7,8 @@ from gui_app.constants import *
 
 # ruff: noqa
 def render_flowchart_thread(text, on_success, on_error):
-    """Background rendering thread handler
+    """Background rendering thread handler."""
 
-    Args:
-        text: Input text to parse
-        on_success: Callback function(svg_bytes) on success
-        on_error: Callback function(error_type, error_message) on error
-    """
     try:
         # Parse edges
         edges = parse_edges(text)
@@ -31,15 +26,8 @@ def render_flowchart_thread(text, on_success, on_error):
 
 
 def display_svg_preview(canvas, svg_bytes):
-    """Display SVG preview in canvas
+    """Display SVG preview in canvas."""
 
-    Args:
-        canvas: Tkinter canvas widget
-        svg_bytes: SVG content as bytes
-
-    Returns:
-        Tuple of (success: bool, message: str)
-    """
     try:
         svg_text = svg_bytes.decode("utf-8")
 

@@ -1,4 +1,7 @@
-"""Unit and integration tests targeting the primary FastAPI application lifecycle entry point."""
+"""
+Unit and integration tests targeting the primary 
+FastAPI application lifecycle entry point.
+"""
 
 from fastapi.templating import Jinja2Templates
 from fastapi.testclient import TestClient

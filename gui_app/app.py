@@ -29,6 +29,7 @@ class Text2FlowGUI:
 
     def _setup_ui(self):
         """Setup UI components"""
+
         # Create main layout
         self.text_input, self.canvas = create_main_layout(
             self.root,
@@ -43,6 +44,7 @@ class Text2FlowGUI:
 
     def render_flowchart(self):
         """Render flowchart (entry point)"""
+
         text = self.text_input.get("1.0", tk.END).strip()
 
         if not text:
@@ -63,6 +65,7 @@ class Text2FlowGUI:
 
         def on_success(svg_bytes, edges, edge_count):
             """Handle successful rendering"""
+
             self.current_svg = svg_bytes
             self.current_edges = edges
 
@@ -73,6 +76,7 @@ class Text2FlowGUI:
 
         def on_error(error_type, error_message, status_msg):
             """Handle rendering error"""
+
             messagebox.showerror(ERROR_DIALOG_RENDER, f"{error_type}: {error_message}")
             self.status_var.set(status_msg)
             self.root.update()
@@ -86,6 +90,7 @@ class Text2FlowGUI:
 
     def export_diagram(self, format_type):
         """Export diagram (entry point)"""
+
         if self.current_edges is None:
             messagebox.showwarning("No Diagram", ERROR_NO_DIAGRAM)
             return
@@ -111,12 +116,14 @@ class Text2FlowGUI:
 
         def on_success(message, status):
             """Handle successful export"""
+
             messagebox.showinfo(ERROR_DIALOG_SUCCESS, message)
             self.status_var.set(status)
             self.root.update()
 
         def on_error(message):
             """Handle export error"""
+
             messagebox.showerror(ERROR_DIALOG_EXPORT, message)
             self.status_var.set("Export failed")
             self.root.update()
@@ -126,10 +133,12 @@ class Text2FlowGUI:
 
     def on_mousewheel(self, event):
         """Handle mouse wheel zoom"""
+
         pass  # Implement zoom if needed
 
     def clear_input(self):
         """Clear input text and canvas"""
+
         self.text_input.delete("1.0", tk.END)
         self.canvas.delete("all")
         self.current_edges = None

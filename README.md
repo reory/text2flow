@@ -17,6 +17,28 @@ A lightweight, high-performance web application that converts simple text syntax
 
 ---
 
+## 📑 Table of Contents
+
+- [Why This Project Was Built](#-why-this-project-was-built)
+- [Features](#-features)
+- [Screenshots](#screenshots)
+- [Getting Started](#-getting-started)
+- [Installation](#️-installation)
+- [How to Use](#-how-to-use)
+- [Project Structure](#-project-structure)
+- [Tech Stack](#-tech-stack)
+- [Analysis](#-analysis)
+- [Testing](#-testing)
+- [Roadmap Features](#️-roadmap-features)
+
+---
+
+## 💡 Why This Project Was Built
+
+`Text2Flow` eliminates the friction of complex drag-and-drop diagramming tools by letting you instantly compile simple text syntax (A -> B) into professional visual diagrams without leaving the keyboard.
+
+---
+
 ## ✨ Features
 
 - Instant Rendering: Convert text to diagrams in real-time.
@@ -29,8 +51,10 @@ A lightweight, high-performance web application that converts simple text syntax
 
 ---
 
+## 📸 Screenshots
+
 <details>
-  <summary>📸Screenshots</summary>
+  <summary>click here</summary>
   
   <br>
 
@@ -51,16 +75,29 @@ A lightweight, high-performance web application that converts simple text syntax
 
 ## 🚀 Getting Started
 
-Prerequisites
+### Prerequisites
+
 - Python 3.8+
 
-- Graphviz Software: This app requires the Graphviz binaries to be installed on your system.
+### Graphviz Software:
+This app requires the Graphviz binaries 
+to be installed on your system.
 
-- Windows: Download here. Ensure you check "Add Graphviz to system PATH" during installation.
+### Windows:
 
-- macOS: brew install graphviz
+```text
+Download here. Ensure you check "Add Graphviz to system PATH" during installation.
+```
 
-- Linux: sudo apt install graphviz
+### macOS:
+```bash
+brew install graphviz
+```
+
+### Linux: 
+```bash
+sudo apt install graphviz
+```
 
 ---
 
@@ -71,6 +108,7 @@ Clone the repository:
 git clone https://github.com/reory/text2flow.git
 cd text2flow
 ```
+
 ### Create and activate a virtual environment:
 
 ```Bash
@@ -80,21 +118,32 @@ python -m venv venv
 # macOS/Linux
 source venv/bin/activate
 ```
+
 ### Install dependencies:
 
 ```Bash
-pip install fastapi uvicorn graphviz jinja2 python-multipart pyragify
+uv sync
 ```
+
 ### Run the server:
 
 ```Bash
-uvicorn app.main:app --reload
+uv run uvicorn app.main:app --reload
 Open your browser to http://127.0.0.1:8000.
 ```
+
+### Run the Desktop GUI app:
+
+```bash
+uv run python gui_app.py
+```
+
 ---
 
+## 🧠 How to use
+
 <details>
-  <summary>📝 How to Use</summary>
+  <summary>click here</summary>
 
 The editor uses a simple arrow-based syntax (->) to define relationships between nodes.
 
@@ -126,31 +175,33 @@ Run_Tests -> Deploy
 
 ---
 
-## 🛠️ Project Structure
+## 📁 Project Structure
 
-```
+```plaintext
 text2flow/
 ├── app/
-│   ├── main.py
+│   ├── main.py                # FastAPI entry point and middleware binding.
 │   ├── routers/
-│   │   └── api.py          
+│   │   └── api.py             # Programmatic API endpoints for diagram rendering.
 │   ├── services/
-│   │   ├── parser.py
-│   │   ├── renderer.py
-│   │   └── logger.py       
+│   │   ├── parser.py          # Syntax parser converting text lines into graph edges.
+│   │   ├── renderer.py        # Graphviz wrapper compiling diagram components.
+│   │   └── logger.py          # Centralized logging configuration.
 │   ├── static/
-│   │   ├── css/style.css
-│   │   └── js/app.js
+│   │   ├── css/style.css      # Custom UI styling and layout sheets.
+│   │   └── js/app.js          # Frontend asynchronous render and export logic.
 │   └── templates/
-│       └── editor.html
-|── screenshots/
-|── tests/
-├── .gitignore 
-|── config.yaml
-|── gui_app.py                     
-├── LICENSE                
-├── README.md               
-└── requirements.txt        
+│       └── editor.html        # Main Jinja2 editor interface markup.
+├── screenshots/               # UI and feature preview images.
+├── tests/                     # Comprehensive pytest test suites.
+├── .gitignore                 # Git exclusion rules.
+├── config.yaml                # Pyragify master code analysis template config.
+├── gui_app.py                 # Tkinter-based desktop application entry point.
+├── pyproject.toml             # Modern uv project and dependency metadata configuration.
+├── uv.lock                    # Astral uv dependency lockfile.
+├── LICENSE                    # MIT open-source license agreement.
+├── README.md                  # Project overview, setup, and usage documentation.
+└── CONTRIBUTING.md            # Guidelines for contributing to the repository.
 ```
 
 ---
@@ -168,49 +219,38 @@ text2flow/
 ---
 
 ## 💻 Analysis
+
 This repository includes a config.yaml for use with **pyragify**. To generate a single-file codebase for analysis in LLMs like NotebookLM, run:
-- python -m pyragify --config-file config.yaml
+
+```bash
+uv run python -m pyragify --config-file config.yaml
+```
 
 ---
 
 ## 🧪 Testing
-Just type pytest in the terminal
-- pytest
 
+Type pytest in the terminal
+
+```bash
+uv run pytest
+```
 ---
+
+## 🛣️ Roadmap Features
+
 <details>
-  <summary>🛣️ Roadmap Features</summary>
-  
-  - [ ] Persistence: Use a database (SQLite) to allow users to save their diagrams and get a unique URL to share them.
+  <summary>click here</summary>
 
 - [x] Export to PDF: Generate print-ready documents of the flowcharts.
+
+- [ ] Persistence: Use a database (SQLite) to allow users to save their diagrams and get a unique URL to share them.
 
 - [ ] Theme Engine: Pre-load built-in color palettes and styling presets (e.g., Cyberpunk, Solarized, Pastel, or Classic Dark Mode) to beautifully style entire diagrams instantly without typing manual hex codes.
 
 - [ ] Real-time Live Preview: Implement an asynchronous "render-as-you-type" mechanism with a smart debounce timer, updating the canvas dynamically as the user modifies text without requiring a manual button click.
 
 - [ ] Multi-Engine Layouts: Introduce a UI dropdown to switch between alternative Graphviz layout engines (like `circo` for circular topologies, `neato` for organic networks, or `twopi` for radial structures) beyond the standard top-to-bottom flowchart
-
-</details>
-
----
-
-<details>
-  <summary>🤝 Contributions</summary>
-
-- Reporting Bugs: Open an issue with a clear description and steps to reproduce the error.
-
-- Suggesting Enhancements: Have an idea for a new shape or color syntax? Open an issue to discuss it!
-
-- Pull Requests: * Fork the repo.
-
-- Create your feature branch (git checkout -b feature/AmazingFeature).
-
-- Commit your changes (git commit -m 'Add some AmazingFeature').
-
-- Push to the branch (git push origin feature/AmazingFeature).
-
-- Open a Pull Request.
 
 </details>
 
